@@ -1,10 +1,12 @@
 package pl.example.spring.Teczka;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class NewStudent
 {
-    final String name;
-    final String stud_group;
-    final String number;
+    @JsonProperty("name")  final String name;
+    @JsonProperty("stud_group") final String stud_group;
+    @JsonProperty("number") final String number;
 
     public NewStudent(long id, String name, String stud_group, String number)
     {
