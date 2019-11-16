@@ -3,16 +3,30 @@ package pl.example.spring.Teczka;
 
 import org.junit.Test;
 import io.vavr.collection.List;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import pl.example.spring.Teczka.db.StudentRepository;
+
 import static org.junit.Assert.*;
 
-public class StudentServiceTest
+public class studentServiceTest
 {
+    //@RunWith(SpringRunner.class)
+   // @SpringBootTest
     @Test
     public void getEmptyList() {
-        final StudentService service = new StudentService();
-        List<Student> students = service.getStudents();
-        assertTrue(students.isEmpty());
+       // final StudentService service = new StudentService(repository); ODKOMENTOWA TA LINIJKE
+        //final StudentService service = new StudentService();
+       // List<Student> students = service.getStudents();
+        //assertTrue(students.isEmpty());
+    }
 
+    public class StudentServiceTest
+    {
+        @Autowired
+        private StudentRepository repository;
     }
 
     @Test

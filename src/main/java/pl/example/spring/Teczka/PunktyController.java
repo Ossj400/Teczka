@@ -1,10 +1,7 @@
 package pl.example.spring.Teczka;
-
-
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -14,7 +11,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class PunktyController
 {
 
-    private StudentService service = new StudentService();
+    private final StudentService studentService;
+
+    public PunktyController(StudentService studentService)
+    {
+        this.studentService = studentService;
+    }
 
 
     private CopyOnWriteArrayList<String> users= new CopyOnWriteArrayList<>();
@@ -25,14 +27,14 @@ public class PunktyController
     @RequestMapping( value = "/students", method = RequestMethod.GET)
     public List<Student> getUsers()
     {
-        return service.getStudents().asJava();
+        return studentService.getStudents().asJava();
     }
 
 
     @PostMapping( value ="/students/add",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Student addStudent(@RequestBody NewStudent student)
     {
-        return service.addStudent(student);
+        return studentService.addStudent(student);
     }
 
 

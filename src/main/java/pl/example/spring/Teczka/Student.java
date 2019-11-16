@@ -1,10 +1,11 @@
 package pl.example.spring.Teczka;
 
-public class Student {
+public class Student
+{
     public long id;
     public String name, stud_group, number;
 
-    public Student(long id, String name, String number, String stud_group )
+    public Student(long id, String name, String number, String stud_group)
     {
         this.id = id;
         this.name = name;
