@@ -38,10 +38,10 @@ public class studentServiceTest
     @Test
     public void addStudentIsReturned()
     {
-        final StudentService service = new StudentService(repository);
-        final Student student = service.addStudent(new NewStudent(1, "a", "b", "c"));
-        final List<Student> all = service.getStudents();
-        assertEquals(1, all.get(0).id);
+        final StudentService controller = new StudentService(repository);
+        final Student student = controller.addStudent(new NewStudent(1, "TEst", "T", "1"));
+        final List<Student> all = controller.getStudents();
+        assertEquals(1, all.length());
 
         assertEquals(all.get().id, student.id);
         assertEquals(all.get().name, student.name);

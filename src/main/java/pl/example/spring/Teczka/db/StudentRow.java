@@ -9,11 +9,17 @@ import javax.persistence.Id;
 @Entity
 public class StudentRow
 {
-    public StudentRow(String name, String number, String stdgroup)
+    protected StudentRow()
+    {
+
+    }
+    public StudentRow(String name, String number, String stud_group)
     { this.name = name;
         this.number = number;
         this.stud_group = stud_group;
     }
+
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id private long id;
     private String name;

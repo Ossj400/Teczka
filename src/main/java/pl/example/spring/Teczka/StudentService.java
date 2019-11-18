@@ -21,7 +21,6 @@ public class StudentService
 
     List<Student> getStudents()
     {
-        //List.ofAll(this.repository.findAll()).map();
         this.repository.findAll();
         return   List.ofAll(this.repository.findAll())
                 .map(getStudentRowStudentFunction());
@@ -48,6 +47,5 @@ public class StudentService
                 newStudent.stud_group));
 
         return getStudentRowStudentFunction().apply(created);
-
     }
 }
