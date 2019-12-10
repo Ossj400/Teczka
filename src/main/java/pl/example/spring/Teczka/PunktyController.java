@@ -1,11 +1,12 @@
 package pl.example.spring.Teczka;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @RestController
@@ -28,6 +29,7 @@ public class PunktyController
     @RequestMapping( value = "/students", method = RequestMethod.GET)
     public List<Student> getUsers()
     {
+
         return studentService.getStudents().asJava();
     }
 
@@ -38,5 +40,28 @@ public class PunktyController
         return studentService.addStudent(student);
     }
 
+    @RequestMapping( value = "/students/{id}/number/{number}", produces =  MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Student setNumber(@PathVariable("id") long id, @PathVariable("number") String number)
+    {
+        return this.studentService.changeNumber(id, number).orElseThrow(
+                () -> new IllegalArgumentException("Student o id: " + id + " does not exist") );    }
+
+    @RequestMapping (value = "/students/{id}/scores", produces =  MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public int addScore(@RequestBody Score score, @PathVariable("id") long id ) {
+        return this.studentService.addScore(id, score).
+                orElseThrow(()->new NoStudentException(id));
+
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public class NoStudentException extends RuntimeException
+    {
+        public NoStudentException(long id) {
+            super("Student o id :"+id+" does not exists");}
+    }
+
+
 
 }
+
+

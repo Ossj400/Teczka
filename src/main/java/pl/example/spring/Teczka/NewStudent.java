@@ -1,6 +1,9 @@
 package pl.example.spring.Teczka;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import pl.example.spring.Teczka.db.StudentRow;
+
+import java.util.Set;
 
 public class NewStudent
 {
