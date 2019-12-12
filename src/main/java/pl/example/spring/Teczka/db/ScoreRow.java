@@ -10,7 +10,7 @@ public class ScoreRow {
     private int score;
     private String comment;
 
-    public ScoreRow() {
+    protected ScoreRow() {
     }
 
     public ScoreRow(int score, String comment, StudentRow student) {

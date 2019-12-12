@@ -28,6 +28,10 @@ public class StudentRow
         this.number = number;
         this.stud_group = stud_group;
     }
+    protected StudentRow()
+    {
+
+    }
 
     public String getName()
     {

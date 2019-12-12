@@ -34,7 +34,7 @@ public class studentServiceTest
     @Test
     public void addStudent() {
         final StudentService service = new StudentService(repository, scoreRepository);
-        final Student created = service.addStudent(new NewStudent(1, "Student1", "IP", "1", 1));
+        final Student created = service.addStudent(new NewStudent(1, "Student1", "IP", "1"));
         assertNotNull(created);
     }
 
@@ -42,7 +42,7 @@ public class studentServiceTest
     public void addStudentIsReturned()
     {
         final StudentService controller = new StudentService(repository, scoreRepository);
-        final Student student = controller.addStudent(new NewStudent(1, "TEst", "T", "1", 1));
+        final Student student = controller.addStudent(new NewStudent(1, "TEst", "T", "1"));
         final List<Student> all = controller.getStudents();
         assertEquals(1, all.length());
 
@@ -56,8 +56,8 @@ public class studentServiceTest
     public void addStudentHasNewId()      // Double test
     {
         final StudentService service = new StudentService(repository, scoreRepository);
-        service.addStudent(new NewStudent(1, "a", "b", "c", 1));
-        service.addStudent(new NewStudent(1, "b", "b", "c", 1));
+        service.addStudent(new NewStudent(1, "a", "b", "c"));
+        service.addStudent(new NewStudent(1, "b", "b", "c"));
         final List<Student> all = service.getStudents();
         assertEquals(2,service.getStudents().size());
         assertNotEquals(all.get(0).id,all.get(1).id);
